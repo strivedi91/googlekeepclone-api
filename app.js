@@ -5,7 +5,11 @@ const mongoose = require("mongoose");
 require("dotenv/config");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const swaggerSpec = require("./swagger");
+const swaggerUI = require("swagger-ui-express");
 
+//Swagger setup
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 //Register Middlewares
 //CORS
 app.use(cors());
@@ -14,7 +18,7 @@ app.use(bodyParser.json());
 
 // Notes Route
 const notesRoute = require("./routes/Notes");
-app.use("/notes", notesRoute);
+app.use("/api/notes", notesRoute);
 
 //Connect to MongoDb
 mongoose.connect(

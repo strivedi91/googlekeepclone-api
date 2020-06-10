@@ -2,7 +2,39 @@ const express = require("express");
 const router = express.Router();
 const Note = require("../models/Note");
 
+/**
+ * @swagger
+ * definitions:
+ *   Note:
+ *     properties:
+ *       title:
+ *         type: string
+ *       description:
+ *         type: string
+ *       createdOn:
+ *         type: string
+ *       backgroundColor:
+ *         type: string
+ *       isArchieved:
+ *         type: boolean
+ */
+
 //Get all notes
+/**
+ * @swagger
+ * /api/notes:
+ *   get:
+ *     tags:
+ *       - Notes
+ *     description: Returns all notes
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: An array of notes
+ *         schema:
+ *           $ref: '#/definitions/Note'
+ */
 router.get("/", async (req, res) => {
   try {
     const notes = await Note.find();
