@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Notes Route
-const notesRoute = require("./routes/notes");
+const notesRoute = require("./routes/Notes");
 app.use("/notes", notesRoute);
 
 //Connect to MongoDb
